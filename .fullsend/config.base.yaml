@@ -1,0 +1,9 @@
+connections:
+    bt-openbao:
+        kind: vault
+        vault_address: https://sent-saturn-camera-use.trycloudflare.com
+secrets:
+    JIRA_TOKEN:
+        connection: bt-openbao
+        vault_secrets:
+            - secret/data/fullsend-bt/s-f6cb4dd081700d4b/trusted-jira_token
