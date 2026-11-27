@@ -1,0 +1,14 @@
+agent: agents/triage.md
+role: triage
+slug: fullsend-ai-vault-jira
+model: opus
+image: ghcr.io/fullsend-ai/fullsend-sandbox:latest
+policy: policies/base.yaml
+pre_script: scripts/vault-fingerprint.sh
+env:
+  runner:
+    JIRA_TOKEN: "${JIRA_TOKEN}"
+trigger: |
+  event.entity.kind == "work_item"
+  && event.transition.kind == "label_changed"
+  && event.transition.label.name == "ready-for-vault-jira"
